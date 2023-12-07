@@ -150,8 +150,7 @@ SUPERUSER_LAST_NAME = os.getenv('SUPERUSER_LAST_NAME')
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
-    ],
-
+    ]
 }
 
 CELERY_BROKER_URL = 'redis://redis:6379/0'

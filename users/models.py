@@ -9,7 +9,6 @@ class User(AbstractUser):
 
     username = None
     email = models.EmailField(max_length=255, unique=True, verbose_name='email')
-    phone = models.CharField(max_length=150, verbose_name='номер телефона', **NULLABLE)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='дата создания')
 
     USERNAME_FIELD = 'email'
