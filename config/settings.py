@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
-from datetime import timedelta
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -42,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
-    'django_celery_beat',
 
     'books',
     'users',
@@ -148,13 +146,6 @@ SUPERUSER_EMAIL = os.getenv('SUPERUSER_EMAIL')
 SUPERUSER_PASSWORD = os.getenv('SUPERUSER_PASSWORD')
 SUPERUSER_FIRST_NAME = os.getenv('SUPERUSER_FIRST_NAME')
 SUPERUSER_LAST_NAME = os.getenv('SUPERUSER_LAST_NAME')
-
-CELERY_BEAT_SCHEDULE = {
-    'task-name': {
-        'task': 'myapp.tasks.my_task',
-        'schedule': timedelta(seconds=30),
-    },
-}
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [

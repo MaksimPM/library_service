@@ -35,17 +35,8 @@ services:
   celery:
     build: .
     tty: true
-    command: celery -A config worker -l INFO
+    command: sh -c "python manage.py makemigrations && python manage.py migrate && celery -A config worker -l INFO"
     depends_on:
-      - redis
-      - app
-
-  celery_beat:
-    build: .
-    tty: true
-    command: sh -c "python manage.py makemigrations && python manage.py migrate && celery -A config beat -l INFO -S django"
-    depends_on:
-      - db
       - redis
       - app
 
