@@ -6,9 +6,9 @@ from users.views import UserListAPIView, UserRetrieveAPIView, UserCreateAPIView,
 app_name = UsersConfig.name
 
 urlpatterns = [
-    path('list/', UserListAPIView.as_view(), name='users'),
-    path('register/', UserCreateAPIView.as_view(), name='user_register'),
-    path('<int:pk>/', UserRetrieveAPIView.as_view(), name='user'),
-    path('<int:pk>/update/', UserUpdateAPIView.as_view(), name='user_update'),
-    path('<int:pk>/delete/', UserDestroyAPIView.as_view(), name='user_delete'),
+    path('users/list/', UserListAPIView.as_view(), name='users'),
+    path('user/register/', UserCreateAPIView.as_view(), name='user_register'),
+    path('user/<int:pk>/', UserRetrieveAPIView.as_view(), name='user'),
+    path('user/<int:pk>/update/', UserUpdateAPIView.as_view(), name='user_update'),
+    path('user/<int:pk>/delete/', UserDestroyAPIView.as_view(), name='user_delete'),
 ]
