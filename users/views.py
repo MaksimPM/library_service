@@ -6,7 +6,7 @@ from users.tasks import send_email_task
 
 class UserCreateAPIView(generics.CreateAPIView):
     serializer_class = UserSerializer
-
+    """Отправка приветственного письма пользователю"""
     def perform_create(self, serializer):
         user = serializer.save()
         send_email_task.delay(user.id)
