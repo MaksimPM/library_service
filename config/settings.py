@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
-from datetime import timedelta
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -28,7 +27,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -42,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
-    'django_celery_beat',
 
     'books',
     'users',
@@ -149,20 +147,12 @@ SUPERUSER_PASSWORD = os.getenv('SUPERUSER_PASSWORD')
 SUPERUSER_FIRST_NAME = os.getenv('SUPERUSER_FIRST_NAME')
 SUPERUSER_LAST_NAME = os.getenv('SUPERUSER_LAST_NAME')
 
-CELERY_BEAT_SCHEDULE = {
-    'task-name': {
-        'task': 'myapp.tasks.my_task',
-        'schedule': timedelta(seconds=30),
-    },
-}
-
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
-    ],
-
+    ]
 }
 
 CELERY_BROKER_URL = 'redis://redis:6379/0'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://redis:6379'
 CELERY_TIMEZONE = "Europe/Moscow"
