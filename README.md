@@ -17,7 +17,7 @@ docker-compose up
 ```
 Для работы с админкой необходимо создать суперпользователя командой:
 ```shell
-docker-compose exec -it python manage.py csu
+docker-compose exec -it <container_id> python manage.py csu
 ```
 
 После выполнения команды произойдёт:
